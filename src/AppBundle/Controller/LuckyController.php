@@ -8,11 +8,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LuckyController
 {
-
+    // BASICALLY ROUTING INSIDE CONTROLLER
     /**
-     * @Route("/lucky/number")
+     * @Route("/lucky/number/{count}")
      */
-     public function numberAction($count) {
+     public function numberAction($count)
+     {
        $numbers = array();
        for ($i = 0; $i < $count; $i++) {
          $numbers[] = rand(0, 100);
