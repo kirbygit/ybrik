@@ -7,10 +7,10 @@
   class HelloController
   {
     /**
-    * @Route("/hello/{name}", name="hello")
+    * @Route("/hello/{firstName}/{lastName}", name="hello")
     */
-    public function indexAction($name)
+    public function indexAction($firstName)
     {
-      return new Response('<html><body>Hello '.$name.'!</body></html>'); }
+      return new Response('<html><body>Hello '.$firstName.'!</body></html>'); }
     }
 ?>
