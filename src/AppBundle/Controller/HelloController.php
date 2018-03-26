@@ -13,16 +13,24 @@
   {
     public function indexAction(Request $request)
     {
-      $session = $request->getSession();
+      // is it an Ajax request?
+      $request->isXmlHttpRequest();
+      $request->getPreferredLanguage(array('en', 'fr'));
 
-      // store an attribute for reuse during a later user request
-      $session->set('foo', 'bar');
+      // retrieve GET and POST variables respectively
+      $request->query->get('page');
+      $request->request->get('page');
 
-      // get the attribute set by another controller in another request
-      $foobar = $session->get('foobar');
+      // retrieve SERVER variables
+      $request->server->get('HTTP_HOST');
 
-      // use a default value if the attribute doesn't exist
-      $filters = $session->get('filters', array());
+      // retrieves an instance of UploadedFile indentified by foo
+      $request->files->get('foo');
+
+      // retrieve a COOKIE value
+      $request->cookies->get('PHPSESSID');
+
+      // retrieve an HTTP request header, with normalized, lowercase keys
     }
 
     public function updateAction(Request $request)
